@@ -31,6 +31,23 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+**/build/
+**/ios/Flutter/App.framework/
+**/pubspec.lock
+**/.idea/
+**/.vscode/
+
+# Xcode specific
+**/.xcworkspace/
+**/*.xcuserstate
+
+# Android specific
+**/android/build/
+**/android/gradle.properties
+**/android/gradle/
+**/android/local.properties
+**/android/*.iml
+**/android/captures/
 
 # Symbolication related
 app.*.symbols

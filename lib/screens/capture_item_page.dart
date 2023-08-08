@@ -7,7 +7,7 @@ class CaptureItemPage extends StatefulWidget {
   const CaptureItemPage({super.key});
 
   @override
-  _CaptureItemPageState createState() => _CaptureItemPageState();
+  State<CaptureItemPage> createState() => _CaptureItemPageState();
 }
 
 class _CaptureItemPageState extends State<CaptureItemPage> {
@@ -114,8 +114,8 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       // Process form data here
-      print('Name: ${_descriptionController.text}');
-      print('Price: ${_priceController.text}');
+      debugPrint('Name: ${_descriptionController.text}');
+      debugPrint('Price: ${_priceController.text}');
     }
     debugPrint('Quantity: ${_quantityController.text}');
   }

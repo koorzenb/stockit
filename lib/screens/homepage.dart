@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // TODO: idea: click share -> navigate to select customer bank (eg ABSA) -> once selected, navigate to sharing panel -> select "WhatsApp" -> on WhatsApp message populate with our ABSA details and price
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           String itemKey = items.keys.elementAt(index);
           Map<String, dynamic> item = items[itemKey]!;
           final description = item['description'];
-          final price = item['price']; // TODO: convert this all to a stless widget
+          final price = item['price'];  TODO: convert this all to a stless widget
           return ListTile(
             leading: const Icon(Icons.image),
             title: Text(description),

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stockit/screens/capture_item_page.dart';
 
+import '../models/item.dart';
+import '../widgets/inventory_list.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -15,10 +18,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     setState(() {
-      items = {
-        "Item1": {'description': 'item1 name', 'price': 12.99},
-        "Item2": {'description': 'item2 name', 'price': 5.99},
-      };
       super.initState();
     });
   }
@@ -26,6 +25,11 @@ class _HomePageState extends State<HomePage> {
   // TODO: idea: click share -> navigate to select customer bank (eg ABSA) -> once selected, navigate to sharing panel -> select "WhatsApp" -> on WhatsApp message populate with our ABSA details and price
   @override
   Widget build(BuildContext context) {
+    final items = [
+      Item(description: 'item1', price: 12.99),
+      Item(description: 'item2', price: 5.99),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('StockIt'),
@@ -34,20 +38,7 @@ class _HomePageState extends State<HomePage> {
         // foregroundColor: Colors.white,
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
       ),
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          String itemKey = items.keys.elementAt(index);
-          Map<String, dynamic> item = items[itemKey]!;
-          final description = item['description'];
-          final price = item['price'];  TODO: convert this all to a stless widget
-          return ListTile(
-            leading: const Icon(Icons.image),
-            title: Text(description),
-            trailing: Text(price.toString()),
-          );
-        },
-      ),
+      body: InventoryList(items: items),
       floatingActionButton: FloatingActionButton(
         onPressed: () async => await Get.to(() => const CaptureItemPage()),
         tooltip: 'Increment',

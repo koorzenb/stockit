@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stockit/controllers/item_list_controller.dart';
 
 import '../models/item.dart';
 
 class InventoryList extends StatelessWidget {
-  final List<Item> items;
-
-  const InventoryList({required this.items, super.key});
+  const InventoryList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        // String itemKey = items.keys.elementAt(index);
-        Item item = items[index];
-        return ListTile(
-          leading: const Icon(Icons.image),
-          title: Text(item.description),
-          trailing: Text(item.price.toString()),
-        );
-      },
-    );
+    return GetBuilder<ItemListController>(builder: (itemListController) {
+      return ListView.builder(
+        itemCount: itemListController.items.length,
+        itemBuilder: (context, index) {
+          // String itemKey = items.keys.elementAt(index);
+          Item item = itemListController.items[index];
+          return ListTile(
+            leading: const Icon(Icons.image),
+            title: Text(item.description),
+            trailing: Text(item.price.toString()),
+          );
+        },
+      );
+    });
   }
 }

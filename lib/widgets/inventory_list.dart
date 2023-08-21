@@ -17,7 +17,7 @@ class InventoryList extends StatelessWidget {
           Item item = itemListController.items[index];
           return ListTile(
             leading: item.image ?? const Icon(Icons.image),
-            title: Text(item.description),
+            title: item.description == null ? null : Text(item.description!),
             trailing: Text(item.price.toString()),
           );
         },

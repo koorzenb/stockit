@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stockit/controllers/item_list_controller.dart';
 import 'package:stockit/screens/capture_item_page.dart';
 
 import '../widgets/inventory_list.dart';
@@ -34,10 +35,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: const InventoryList(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async => await Get.to(() => const CaptureItemPage()),
+        onPressed: _onPressed,
         tooltip: 'Increment',
         child: const Icon(Icons.camera),
       ), // T
     );
+  }
+
+  _onPressed() async {
+    final capturedItem = await Get.to(() => const CaptureItemPage());
+    if (capturedItem != null) {
+      ItemListController.getOrPut.add(capturedItem);
+    }
   }
 }

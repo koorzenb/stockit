@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:stockit/models/item.dart';
 
 class CaptureItemPage extends StatefulWidget {
   const CaptureItemPage({super.key});
@@ -13,11 +15,14 @@ class CaptureItemPage extends StatefulWidget {
 class _CaptureItemPageState extends State<CaptureItemPage> {
   File? _imageFile;
   final _formKey = GlobalKey<FormState>();
+  Image? image;
+  String? description;
+  double price = 0.0;
 
   // Add your form fields here
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
-  final TextEditingController _quantityController = TextEditingController();
+  final TextEditingController _quantityController = TextEditingController(); // TODO: implement this
 
   @override
   Widget build(BuildContext context) {
@@ -118,5 +123,6 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
       debugPrint('Price: ${_priceController.text}');
     }
     debugPrint('Quantity: ${_quantityController.text}');
+    Get.back(result: Item(description: _descriptionController.text, price: double.parse(_priceController.text), image: image));
   }
 }

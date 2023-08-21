@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class Item {
   Image? image;
-  final String description;
+  String? description;
   final double price;
 
-  Item({required this.description, required this.price, this.image});
+  Item({this.image, this.description, required this.price});
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stockit/controllers/item_list_controller.dart';
 import 'package:stockit/screens/homepage.dart';
 
 void main() {
+  ItemListController.getOrPut;
   runApp(const MyApp());
 }
 

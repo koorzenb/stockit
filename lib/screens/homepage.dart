@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:stockit/controllers/item_list_controller.dart';
 import 'package:stockit/screens/capture_item_page.dart';
 
-import '../widgets/inventory_list.dart';
+import '../widgets/item_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         // foregroundColor: Colors.white,
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
       ),
-      body: const InventoryList(),
+      body: const ItemList(),
       floatingActionButton: FloatingActionButton(
         onPressed: _onPressed,
         tooltip: 'Increment',

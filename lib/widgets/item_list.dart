@@ -4,8 +4,8 @@ import 'package:stockit/controllers/item_list_controller.dart';
 
 import '../models/item.dart';
 
-class InventoryList extends StatelessWidget {
-  const InventoryList({super.key});
+class ItemList extends StatelessWidget {
+  const ItemList({super.key});
 
   @override
   Widget build(BuildContext context) {

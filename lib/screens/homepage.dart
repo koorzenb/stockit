@@ -34,11 +34,15 @@ class _HomePageState extends State<HomePage> {
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
       ),
       body: const ItemList(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _onPressed,
-        tooltip: 'Increment',
-        child: const Icon(Icons.camera),
-      ), // T
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.camera), label: "Capture"),
+        BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Send for payment'),
+      ]),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _onPressed,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.camera),
+      // ), // T
     );
   }
 

@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       body: const ItemList(),
       bottomNavigationBar: BottomNavigationBar(items: const [
         BottomNavigationBarItem(icon: Icon(Icons.camera), label: "Capture"),
-        BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Send for payment'),
+        BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Checkout'),
       ]),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _onPressed,

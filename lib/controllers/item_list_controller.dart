@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:stockit/models/item.dart';
 
 class ItemListController extends GetxController {
+  double total = 0.0;
   List<Item> items = [
     Item(description: 'item1', price: 12.99),
     Item(description: 'item2', price: 5.99),
@@ -19,6 +20,7 @@ class ItemListController extends GetxController {
 
   add(Item item) {
     items.add(item);
+    total += item.price;
     update();
   }
 }

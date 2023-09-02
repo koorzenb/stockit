@@ -13,6 +13,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    // HomeScreen(),
+    CaptureItemPage(),
+    CheckoutScreen(),
+  ];
   late Map<String, Map<String, dynamic>> items;
 
   @override

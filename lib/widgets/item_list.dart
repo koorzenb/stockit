@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stockit/controllers/item_list_controller.dart';
 
+import '../controllers/item_list_controller.dart';
 import '../models/item.dart';
 
 class ItemList extends StatelessWidget {
@@ -10,35 +10,6 @@ class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Item> items = ItemListController.getOrPut.items;
-
-    // return Column(
-    //   children: [
-    //     Flexible(
-    //       flex: 2,
-    //       child: ListView.builder(
-    //         itemCount: items.length,
-    //         itemBuilder: (context, index) {
-    //           return ListTile(
-    //             title: Text(items[0].description!),
-    //           );
-    //         },
-    //       ),
-    //     ),
-    //     const SizedBox(
-    //       height: 20,
-    //       child: Padding(
-    //         padding: EdgeInsets.symmetric(horizontal: 16.0),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //           children: [
-    //             Text('Total'),
-    //             Text('R20'),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // );
 
     return GetBuilder<ItemListController>(builder: (itemListController) {
       return Column(

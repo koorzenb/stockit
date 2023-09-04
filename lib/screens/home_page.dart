@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:stockit/controllers/item_list_controller.dart';
-import 'package:stockit/screens/capture_item_page.dart';
 
 import '../widgets/item_list.dart';
+import 'capture_item_page.dart';
+import 'checkout_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,9 +15,9 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    // HomeScreen(),
-    CaptureItemPage(),
-    CheckoutScreen(),
+    const ItemList(),
+    const CaptureItemPage(),
+    const CheckoutPage(),
   ];
   late Map<String, Map<String, dynamic>> items;
 
@@ -40,23 +39,22 @@ class _HomePageState extends State<HomePage> {
         // foregroundColor: Colors.white,
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
       ),
-      body: const ItemList(),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.camera), label: "Capture"),
-        BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Checkout'),
-      ]),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _onPressed,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.camera),
-      // ), // T
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTap,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.camera), label: "Capture"),
+          BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Checkout'),
+        ],
+      ),
     );
   }
 
-  _onPressed() async {
-    final capturedItem = await Get.to(() => const CaptureItemPage());
-    if (capturedItem != null) {
-      ItemListController.getOrPut.add(capturedItem);
-    }
+  void _onTap(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:stockit/models/item.dart';
+import '../models/item.dart';
 
 class CaptureItemPage extends StatefulWidget {
   const CaptureItemPage({super.key});
@@ -26,22 +26,17 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('New Item'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 3,
-            child: buildPhotoSection(),
-          ),
-          Expanded(
-            flex: 5,
-            child: buildFormSection(),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Expanded(
+          flex: 3,
+          child: buildPhotoSection(),
+        ),
+        Expanded(
+          flex: 5,
+          child: buildFormSection(),
+        ),
+      ],
     );
   }
 

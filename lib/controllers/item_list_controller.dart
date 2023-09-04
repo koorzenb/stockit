@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:stockit/models/item.dart';
+
+import '../models/item.dart';
 
 class ItemListController extends GetxController {
   double total = 0.0;

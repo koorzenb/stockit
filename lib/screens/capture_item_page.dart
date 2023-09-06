@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:stockit/controllers/item_list_controller.dart';
+
 import '../models/item.dart';
 
 class CaptureItemPage extends StatefulWidget {
@@ -118,6 +119,10 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
       debugPrint('Price: ${_priceController.text}');
     }
     debugPrint('Quantity: ${_quantityController.text}');
-    Get.back(result: Item(description: _descriptionController.text, price: double.parse(_priceController.text), image: image));
+    final item = Item(
+        description: _descriptionController.text,
+        price: double.parse(_priceController.text),
+        image: image); // TODO: add quantity to entity and use to calc total
+    ItemListController.getOrPut.add(item);
   }
 }

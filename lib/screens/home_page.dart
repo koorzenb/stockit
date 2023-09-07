@@ -13,17 +13,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
+  List<Widget> pages = [];
 
-  final List<Widget> _pages = [
-    const ItemList(),
-    const CaptureItemPage(),
-    const CheckoutPage(),
-  ];
   late Map<String, Map<String, dynamic>> items;
 
   @override
   void initState() {
     setState(() {
+      pages = [
+        const ItemList(),
+        CaptureItemPage(
+          setIndex: setPageIndex,
+        ),
+        const CheckoutPage(),
+      ];
       super.initState();
     });
   }
@@ -39,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         // foregroundColor: Colors.white,
         titleTextStyle: Theme.of(context).textTheme.titleLarge,
       ),
-      body: _pages[_currentIndex],
+      body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onTap,
@@ -56,5 +59,9 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _currentIndex = index;
     });
+  }
+
+  setPageIndex() {
+    setState(() => _currentIndex = 0);
   }
 }

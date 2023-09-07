@@ -7,7 +7,9 @@ import 'package:stockit/controllers/item_list_controller.dart';
 import '../models/item.dart';
 
 class CaptureItemPage extends StatefulWidget {
-  const CaptureItemPage({super.key});
+  final void Function() setIndex;
+
+  const CaptureItemPage({required this.setIndex, super.key});
 
   @override
   State<CaptureItemPage> createState() => _CaptureItemPageState();
@@ -92,8 +94,8 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
               },
             ),
             ElevatedButton(
-              onPressed: _submitForm,
-              child: const Text('Submit'),
+              onPressed: _saveForm,
+              child: const Text('Save'),
             ),
           ],
         ),
@@ -112,7 +114,7 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
     }
   }
 
-  void _submitForm() {
+  void _saveForm() {
     if (_formKey.currentState!.validate()) {
       // Process form data here
       debugPrint('Name: ${_descriptionController.text}');
@@ -124,5 +126,6 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
         price: double.parse(_priceController.text),
         image: image); // TODO: add quantity to entity and use to calc total
     ItemListController.getOrPut.add(item);
+    widget.setIndex();
   }
 }

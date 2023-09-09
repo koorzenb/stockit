@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _currentIndex,
         onTap: _onTap,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"), // TODO: consider item list icon with 'Items' label
           BottomNavigationBarItem(icon: Icon(Icons.camera), label: "Capture"),
           BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Checkout'),
         ],

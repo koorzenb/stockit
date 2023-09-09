@@ -14,25 +14,28 @@ class ItemList extends StatelessWidget {
     return GetBuilder<ItemListController>(builder: (itemListController) {
       return Column(
         children: [
-          Flexible(
-            flex: 2,
-            child: ListView.builder(
-              itemCount: itemListController.items.length,
-              itemBuilder: (context, index) {
-                // String itemKey = items.keys.elementAt(index);
-                Item item = itemListController.items[index];
-                return ListTile(
-                  leading: item.image ?? const Icon(Icons.image),
-                  title: item.description == null ? null : Text(item.description!),
-                  trailing: Text(item.price.toString()),
-                );
-              },
-            ),
+          Expanded(
+            child: itemListController.items.isEmpty
+                ? const Center(
+                    child: Text('Add some items...'),
+                  )
+                : ListView.builder(
+                    itemCount: itemListController.items.length,
+                    itemBuilder: (context, index) {
+                      // String itemKey = items.keys.elementAt(index);
+                      Item item = itemListController.items[index];
+                      return ListTile(
+                        leading: item.image ?? const Icon(Icons.image),
+                        title: item.description == null ? null : Text(item.description!),
+                        trailing: Text(item.price.toString()),
+                      );
+                    },
+                  ),
           ),
           SizedBox(
             height: 20,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

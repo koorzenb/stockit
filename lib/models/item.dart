@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-
 class Item {
-  Image? image;
-  String? description;
+  final String? imagePath;
+  final String? description;
   final double price;
 
-  Item({this.image, this.description, required this.price});
+  Item({
+    this.imagePath,
+    this.description,
+    required this.price,
+  });
 }

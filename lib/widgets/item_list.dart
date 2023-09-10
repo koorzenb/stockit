@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,8 +11,6 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Item> items = ItemListController.getOrPut.items;
-
     return GetBuilder<ItemListController>(builder: (itemListController) {
       return Column(
         children: [
@@ -25,7 +25,7 @@ class ItemList extends StatelessWidget {
                       // String itemKey = items.keys.elementAt(index);
                       Item item = itemListController.items[index];
                       return ListTile(
-                        leading: item.image ?? const Icon(Icons.image),
+                        leading: item.imagePath != null ? Image.file(File(item.imagePath!)) : const Icon(Icons.image),
                         title: item.description == null ? null : Text(item.description!),
                         trailing: Text(item.price.toString()),
                       );

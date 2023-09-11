@@ -30,7 +30,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
           },
         ),
         RadioListTile<int>(
-          title: const Text('Capitec'),
+          title: const Text('Capitec - Rita'),
+          value: 2,
+          groupValue: _selectedValue,
+          onChanged: (value) {
+            setState(() {
+              _selectedValue = value!;
+            });
+          },
+        ),
+        RadioListTile<int>(
+          title: const Text('Capitec - Barend'),
           value: 2,
           groupValue: _selectedValue,
           onChanged: (value) {
@@ -64,13 +74,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     switch (_selectedValue) {
       case 2:
-        bankingDetails = BankingDetails(accountHolder: 'B Koorzen', bank: 'Capitec', bankCode: '470010', accountNumber: '123');
+        bankingDetails = BankingDetails(accountHolder: 'R Koorzen', bank: 'Capitec', bankCode: '470010', accountNumber: '1203846493');
         break;
       case 3:
-        bankingDetails = BankingDetails(accountHolder: 'B Koorzen', bank: 'FNB', bankCode: '1234', accountNumber: '123');
+        bankingDetails = BankingDetails(accountHolder: 'B Koorzen', bank: 'Capitec', bankCode: '470010', accountNumber: '1290540673');
+        break;
+      case 4:
+        bankingDetails = BankingDetails(accountHolder: 'B Koorzen', bank: 'FNB', bankCode: '250655', accountNumber: '62434825719');
         break;
       default:
-        bankingDetails = BankingDetails(accountHolder: 'R Koorzen', bank: 'ABSA', bankCode: '256', accountNumber: '905');
+        bankingDetails = BankingDetails(accountHolder: 'R Koorzen', bank: 'ABSA', bankCode: '632005', accountNumber: '9059940551');
     }
 
     Share.share('Please make payment to the following account:\n'

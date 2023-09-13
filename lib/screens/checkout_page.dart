@@ -41,7 +41,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         RadioListTile<int>(
           title: const Text('Capitec - Barend'),
-          value: 2,
+          value: 3,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
@@ -51,7 +51,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         RadioListTile<int>(
           title: const Text('FNB'),
-          value: 3,
+          value: 4,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {

@@ -80,7 +80,7 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
               validator: (value) {
-                if (value!.isEmpty) {
+                if (value!.isEmpty || int.tryParse(value) == null) {
                   return 'Please enter a price';
                 }
                 return null;
@@ -130,7 +130,7 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
     debugPrint('Quantity: ${_quantityController.text}');
     final item = Item(
         description: _descriptionController.text,
-        price: double.parse(_priceController.text),
+        price: double.parse(_priceController.text), // TODO: add numeric validation
         imagePath: _imagePath); // TODO: add quantity to entity and use to calc total
     ItemListController.getOrPut.add(item);
     widget.setIndex();

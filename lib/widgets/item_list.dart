@@ -35,7 +35,7 @@ class ItemList extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Total'), // TODO: set global text theme
-                    Text(itemListController.total.toString()),
+                    Text(itemListController.total.toStringAsFixed(2)),
                   ],
                 ),
               ),

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Stockit',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorSchemeSeed: const Color(0x9f4376f8),
         textTheme: const TextTheme(titleLarge: TextStyle(color: Colors.white)),
         useMaterial3: true,
       ),

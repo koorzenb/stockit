@@ -16,6 +16,7 @@ class ItemListTile extends StatelessWidget {
               height: 30,
               width: 30,
               child: Image.file(
+                // TODO: do not load from file - huge performance hit
                 File(item.imagePath!),
                 fit: BoxFit.fitWidth,
               ),
@@ -29,3 +30,12 @@ class ItemListTile extends StatelessWidget {
     );
   }
 }
+
+// TODO:
+// item:
+// - long tap to edit
+// - swipe right to remove and update total
+
+// drawer:
+// - clear items
+// - add new banking details

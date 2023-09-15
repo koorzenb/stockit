@@ -23,4 +23,10 @@ class ItemListController extends GetxController {
     debugPrint('total = $total');
     update();
   }
+
+  remove(Item item) {
+    items.removeWhere((element) => item == element);
+    total -= item.price;
+    update();
+  }
 }

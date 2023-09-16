@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stockit/widgets/item_list_tile.dart';
 
 import '../controllers/item_list_controller.dart';
+import '../models/item.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({super.key});
@@ -21,7 +21,12 @@ class ItemList extends StatelessWidget {
                     itemCount: itemListController.items.length,
                     itemBuilder: (context, index) {
                       // String itemKey = items.keys.elementAt(index);
-                      return ItemListTile(item: itemListController.items[index]);
+                      Item item = itemListController.items[index];
+                      return ListTile(
+                        leading: item.image ?? const Icon(Icons.image),
+                        title: item.description == null ? null : Text(item.description!),
+                        trailing: Text(item.price.toString()),
+                      );
                     },
                   ),
           ),

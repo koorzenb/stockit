@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
       title: 'Stockit',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        textTheme: const TextTheme(titleLarge: TextStyle(color: Colors.white)),
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(fontSize: 16, color: Colors.black87),
+        ),
         useMaterial3: true,
       ),
       home: const HomePage(),

@@ -91,8 +91,8 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
               textInputAction: TextInputAction.done,
               initialValue: '1',
               validator: (value) {
-                if (value!.isEmpty || int.tryParse(value) == null) {
-                  return 'Please enter the quantity';
+                if (value!.isEmpty || int.tryParse(value) == null || (value.isNotEmpty && int.tryParse(value)! < 1)) {
+                  return 'Please enter a quantity larger than 0';
                 }
                 _quantityController.text = value;
                 return null;

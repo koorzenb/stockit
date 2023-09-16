@@ -25,6 +25,12 @@ class ItemList extends StatelessWidget {
                       return ListTile(
                         leading: item.image ?? const Icon(Icons.image),
                         title: item.description == null ? null : Text(item.description!),
+                        subtitle: item.quantity > 1
+                            ? Text(
+                                '${item.price} x ${item.quantity}',
+                                style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 8, color: Theme.of(context).colorScheme.primary),
+                              )
+                            : null,
                         trailing: Text((item.price * item.quantity).toString()),
                       );
                     },

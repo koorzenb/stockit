@@ -132,9 +132,11 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
     }
     debugPrint('Quantity: ${_quantityController.text}');
     final item = Item(
-        description: _descriptionController.text,
-        price: double.parse(_priceController.text),
-        image: _image); // TODO: add quantity to entity and use to calc total
+      image: _image,
+      description: _descriptionController.text,
+      price: double.parse(_priceController.text),
+      quantity: int.parse(_quantityController.text),
+    );
     ItemListController.getOrPut.add(item);
     widget.setIndex();
   }

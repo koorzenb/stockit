@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:stockit/models/item.dart';
 
@@ -11,14 +9,11 @@ class ItemListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: item.imagePath != null
+      leading: item.image != null
           ? SizedBox(
               height: 30,
               width: 30,
-              child: Image.file(
-                File(item.imagePath!),
-                fit: BoxFit.fitWidth,
-              ),
+              child: item.image,
             )
           : const Icon(Icons.image),
       title: item.description == null ? null : Text(item.description!),

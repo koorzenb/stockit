@@ -25,7 +25,7 @@ class ItemList extends StatelessWidget {
                       return ListTile(
                         leading: item.image ?? const Icon(Icons.image),
                         title: item.description == null ? null : Text(item.description!),
-                        trailing: Text(item.price.toString()),
+                        trailing: Text((item.price * item.quantity).toString()),
                       );
                     },
                   ),

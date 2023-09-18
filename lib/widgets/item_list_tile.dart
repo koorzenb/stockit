@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:stockit/models/item.dart';
 
@@ -11,22 +9,15 @@ class ItemListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: item.imagePath != null
-          ? SizedBox(
-              height: 30,
-              width: 30,
-              child: Image.file(
-                // TODO: do not load from file - huge performance hit
-                File(item.imagePath!),
-                fit: BoxFit.fitWidth,
-              ),
-            )
-          : const Icon(Icons.image),
+      leading: item.image ?? const Icon(Icons.image),
       title: item.description == null ? null : Text(item.description!),
-      trailing: Text(
-        item.price.toStringAsFixed(2),
-        style: const TextStyle(fontSize: 16),
-      ), // TODO: add TextTheme
+      subtitle: item.quantity > 1
+          ? Text(
+              '${item.price} x ${item.quantity}',
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 8, color: Theme.of(context).colorScheme.primary),
+            )
+          : null,
+      trailing: Text((item.price * item.quantity).toString()),
     );
   }
 }
@@ -34,7 +25,6 @@ class ItemListTile extends StatelessWidget {
 // TODO:
 // item:
 // - long tap to edit
-// - swipe right to remove and update total
 
 // drawer:
 // - clear items

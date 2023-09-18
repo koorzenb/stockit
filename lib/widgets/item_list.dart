@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stockit/widgets/item_list_tile.dart';
 
 import '../controllers/item_list_controller.dart';
+import 'item_list_tile.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({super.key});

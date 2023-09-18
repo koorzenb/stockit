@@ -19,7 +19,7 @@ class ItemListController extends GetxController {
 
   add(Item item) {
     items.add(item);
-    total += item.price;
+    total += (item.price * item.quantity);
     debugPrint('total = $total');
     update();
   }

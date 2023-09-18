@@ -16,7 +16,7 @@ class CaptureItemPage extends StatefulWidget {
 }
 
 class _CaptureItemPageState extends State<CaptureItemPage> {
-  File? _imageFile;
+  Image? _image;
   final _formKey = GlobalKey<FormState>();
   String? _imagePath; // TODO: implement this
   String? description;
@@ -47,11 +47,10 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
     return GestureDetector(
       onTap: _takePhoto,
       child: Container(
-        color: Colors.grey, // Placeholder background color
-        child: _imageFile == null
-            ? const Icon(Icons.camera_alt, size: 80, color: Colors.white) // Placeholder icon if no image selected
-            : Image.file(_imageFile!, fit: BoxFit.cover),
-      ),
+          color: Colors.grey, // Placeholder background color
+          height: 200,
+          width: 200,
+          child: _image ?? const Icon(Icons.camera_alt, size: 80, color: Colors.white)),
     );
   }
 
@@ -92,8 +91,8 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
               textInputAction: TextInputAction.done,
               initialValue: '1',
               validator: (value) {
-                if (value!.isEmpty || int.tryParse(value) == null) {
-                  return 'Please enter the quantity';
+                if (value!.isEmpty || int.tryParse(value) == null || (value.isNotEmpty && int.tryParse(value)! < 1)) {
+                  return 'Please enter a quantity larger than 0';
                 }
                 _quantityController.text = value;
                 return null;
@@ -115,7 +114,11 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
 
     if (xFile != null) {
       setState(() {
-        _imageFile = File(xFile.path);
+        _image = Image.memory(
+          File(xFile.path).readAsBytesSync(),
+          width: 200.0,
+          height: 200.0,
+        );
       });
       _imagePath = xFile.path;
     }
@@ -129,9 +132,11 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
     }
     debugPrint('Quantity: ${_quantityController.text}');
     final item = Item(
-        description: _descriptionController.text,
-        price: double.parse(_priceController.text), // TODO: add numeric validation
-        imagePath: _imagePath); // TODO: add quantity to entity and use to calc total
+      image: _image,
+      description: _descriptionController.text,
+      price: double.parse(_priceController.text),
+      quantity: int.parse(_quantityController.text),
+    );
     ItemListController.getOrPut.add(item);
     widget.setIndex();
   }

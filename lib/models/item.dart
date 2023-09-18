@@ -1,11 +1,15 @@
+import 'package:flutter/material.dart';
+
 class Item {
-  final String? imagePath;
+  final Image? image;
   final String? description;
   final double price;
+  final int quantity;
 
   Item({
-    this.imagePath,
+    this.image,
     this.description,
     required this.price,
+    this.quantity = 1,
   });
 }

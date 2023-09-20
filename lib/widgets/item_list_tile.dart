@@ -9,7 +9,10 @@ class ItemListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: item.image ?? const Icon(Icons.image),
+      leading: SizedBox(
+        width: 20,
+        child: item.image ?? const Icon(Icons.image),
+      ),
       title: item.description == null ? null : Text(item.description!),
       subtitle: item.quantity > 1
           ? Text(

@@ -29,4 +29,9 @@ class ItemListController extends GetxController {
     total -= item.price;
     update();
   }
+
+  Item getItem(int idx) {
+    // TODO: remove if no performance issues with saving images
+    return items[idx];
+  }
 }

@@ -21,7 +21,7 @@ class ItemList extends StatelessWidget {
                     itemCount: itemListController.items.length,
                     itemBuilder: (context, index) {
                       // String itemKey = items.keys.elementAt(index);
-                      final item = itemListController.items[index];
+                      final item = itemListController.getItem(index);
                       return Dismissible(
                         key: UniqueKey(),
                         background: Container(

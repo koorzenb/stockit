@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/item_list.dart';
+import '../widgets/main_drawer.dart';
 import 'capture_item_page.dart';
 import 'checkout_page.dart';
 
@@ -52,6 +53,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Checkout'),
         ],
       ),
+      drawer: const MainDrawer(),
     );
   }
 

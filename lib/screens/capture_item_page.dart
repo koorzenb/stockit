@@ -110,7 +110,7 @@ class _CaptureItemPageState extends State<CaptureItemPage> {
 
   Future<void> _takePhoto() async {
     final ImagePicker picker = ImagePicker();
-    final xFile = await picker.pickImage(source: ImageSource.camera); //TODO: do not confirm image on capture - send immediately to hero image
+    final xFile = await picker.pickImage(source: ImageSource.camera);
 
     if (xFile != null) {
       setState(() {
